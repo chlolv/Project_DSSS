@@ -1,12 +1,14 @@
 #-----------------------------------------------------#
 #
 #     Project in Data Science for Social Sciences
-#       Data preprocessing for the computation of and inidcator of satisfaction
+#       Data preprocessing for the computation of and indicator of satisfaction
 #
 #                               Chloe Lavest & Yasmine Houri
 #                               Academic year 2021-2022
 #
 #-----------------------------------------------------#
+
+rm(list = ls())
 
 # Import packages
 library("haven")
@@ -20,8 +22,15 @@ library("gtsummary")
 
 # Creation base spss (labels explicites)
 # Import data
-setwd("C:\\Users\\HP\\Documents\\cours_ensae\\3A\\Projet DSSS\\gardiens_paix")
-path <- "C:/Users/HP/Documents/cours_ensae/3A/Projet DSSS/gardiens_paix"
+# Yasmine
+# setwd("C:\\Users\\HP\\Documents\\cours_ensae\\3A\\Projet DSSS\\gardiens_paix")
+# path <- "C:/Users/HP/Documents/cours_ensae/3A/Projet DSSS/gardiens_paix"
+
+# Chloé
+setwd("C:\\Users\\chloe\\OneDrive\\Bureau\\3A\\Projet DSSS")
+path <- "gardiens_paix"
+
+
 files <- list.files(path,pattern="gardien")
 data_spss <- list()
 i = 1
@@ -122,3 +131,4 @@ df_sav <- df_sav %>% relocate(vague, .after = CIDENTIT)
 
 # Save file
 saveRDS(df_sav, "df_sav")
+
