@@ -105,7 +105,7 @@ step.model <- stepAIC(full.model, direction = "both",
 summary(step.model)
 
 data_corr1 <- wave5 %>%
-  select(CIDENTIT, AUTCHOI, CONSENT, IDAPN, METIER, score5)
+  select(CIDENTIT, AUTCHOI, CONSENT, IDAPN, METIER, IDMET, score5)
 
 data_corr <- wave1_test %>%
   select(CIDENTIT, conj_pol, mere_pol, pere_pol, ant_pol,
@@ -115,6 +115,7 @@ data_corr <- wave1_test %>%
   rename(Service = exp_ant) %>%
   rename(Conseil = CONSENT) %>%
   rename(Idee.metier = METIER) %>%
+  rename(Idee.metier2 = IDMET) %>%
   rename(Satis.5 = score5) %>%
   rename(Repro.6 = score6) %>%
   rename(Police.conjoint = conj_pol) %>%
@@ -156,3 +157,12 @@ corrplot(corr_satis_repro, method="color", col=col(200),
          # Cacher les coefficients de corrélation sur la diagonale
          diag=FALSE 
 )
+
+
+# Comments on the corrplot:
+# Our reproduction score on 6 variables is only
+# weakly correlated with all varibales which are not part of
+# it's construction. It is positively correlated with all satisfaction
+# variables except for IDAPN (Idee.police).
+
+

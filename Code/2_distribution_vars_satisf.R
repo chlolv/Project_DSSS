@@ -113,8 +113,8 @@ df$EMPLMUN[which(df$EMPLMUN != 0)] <- 1
 
 df$COMAUT[which(df$COMAUT != 1)] <- 0
 
-df$CONSENT[which(df$CONSENT == 2)] <- 1
-df$CONSENT[which(df$CONSENT != 1)] <- 0
+df$CONSENT[which(df$CONSENT == 2)] <- 1 # 
+df$CONSENT[which(df$CONSENT != 2)] <- 0 # resolved an issue here
 
 df$PORTUNI[which(df$PORTUNI != 1)] <- 0
 
