@@ -19,6 +19,13 @@ library("purrr")
 library("foreign")
 library("data.table")
 library("gtsummary")
+library(conflicted)
+
+
+conflict_prefer("select", "dplyr")
+conflict_prefer("filter", "dplyr")
+conflict_prefer("mutate", "dplyr")
+
 
 # Creation base spss (labels explicites)
 # Import data

@@ -17,11 +17,24 @@ library("purrr")
 library("foreign")
 library("data.table")
 library("gtsummary")
+library(conflicted)
+
+
+conflict_prefer("select", "dplyr")
+conflict_prefer("filter", "dplyr")
+conflict_prefer("mutate", "dplyr")
 
 # Chargement des données
 # Import data
-setwd("C:\\Users\\HP\\Documents\\cours_ensae\\3A\\Projet DSSS\\gardiens_paix")
-path <- "C:/Users/HP/Documents/cours_ensae/3A/Projet DSSS/gardiens_paix"
+# Yasmine
+# setwd("C:\\Users\\HP\\Documents\\cours_ensae\\3A\\Projet DSSS\\gardiens_paix")
+# path <- "C:/Users/HP/Documents/cours_ensae/3A/Projet DSSS/gardiens_paix"
+
+# Chloé
+setwd("C:\\Users\\chloe\\OneDrive\\Bureau\\3A\\Projet DSSS")
+path <- "gardiens_paix"
+
+
 df_spss <- readRDS("df_spss")
 df_sav <- readRDS("df_sav")
 
@@ -31,7 +44,7 @@ vars_satisf <- c("AUTCHOI","EMPLMUN","COMAUT","MOTIFAU","CONSENT","RAISCONS",
                  "BONFORM","PLUSTIR","PLUSSOC","PLUSADM", "PLUSTEC", 
                  "PLUSHUM", "PLUSJUR", "PLUSRAP")
 
-# Distribution a plat des variables de statisfaction (labels epxlicites)
+# Distribution a plat des variables de satisfaction (labels explicites)
 df_spss %>% tbl_summary(
   include = all_of(vars_satisf),
   statistic = list(all_continuous() ~ "{mean} ({sd})",
@@ -59,7 +72,7 @@ df_spss %>% tbl_summary(
   as_gt() %>%
   gt::gtsave(filename = paste0("Code/satisfaction","/satisfaction_spss.html"))
 
-# Distribution a plat des variables de statisfaction (labels numeriques)
+# Distribution a plat des variables de satisfaction (labels numeriques)
 df_sav %>% tbl_summary(
   include = all_of(vars_satisf),
   statistic = list(all_continuous() ~ "{mean} ({sd})",

@@ -26,13 +26,23 @@ library(leaps)
 library(MASS)
 library(conflicted)
 
-# conflict_prefer("select", "dplyr")
+conflict_prefer("select", "dplyr")
+conflict_prefer("filter", "dplyr")
+conflict_prefer("mutate", "dplyr")
+conflict_prefer("rename", "dplyr")
 
 # Chargement des données
 # Import data
 rm(list=objects())
-setwd("C:\\Users\\HP\\Documents\\cours_ensae\\3A\\Projet DSSS\\gardiens_paix")
-path <- "C:/Users/HP/Documents/cours_ensae/3A/Projet DSSS/gardiens_paix"
+
+# Yasmine
+# setwd("C:\\Users\\HP\\Documents\\cours_ensae\\3A\\Projet DSSS\\gardiens_paix")
+# path <- "C:/Users/HP/Documents/cours_ensae/3A/Projet DSSS/gardiens_paix"
+
+# Chloé
+setwd("C:\\Users\\chloe\\OneDrive\\Bureau\\3A\\Projet DSSS\\Git_project\\Data")
+path <- "gardiens_paix"
+
 # df_spss <- readRDS("df_spss")
 df <- readRDS("df_sav")
 df[is.na(df)] <- 0
@@ -94,14 +104,55 @@ step.model <- stepAIC(full.model, direction = "both",
                       trace = FALSE)
 summary(step.model)
 
+data_corr1 <- wave5 %>%
+  select(CIDENTIT, AUTCHOI, CONSENT, IDAPN, METIER, score5)
+
+data_corr <- wave1_test %>%
+  select(CIDENTIT, conj_pol, mere_pol, pere_pol, ant_pol,
+  cont_ami,cont_fam, cont_aut, exp_ant, par_pol, score6) %>%
+  plyr::join(data_corr1, by = 'CIDENTIT', type = "inner") %>%
+  select(-CIDENTIT) %>%
+  rename(Service = exp_ant) %>%
+  rename(Conseil = CONSENT) %>%
+  rename(Idee.metier = METIER) %>%
+  rename(Satis.5 = score5) %>%
+  rename(Repro.6 = score6) %>%
+  rename(Police.conjoint = conj_pol) %>%
+  rename(Police.mere = mere_pol) %>%
+  rename(Police.pere = pere_pol) %>%
+  rename(Police.parents = par_pol) %>%
+  rename(Contact.fam = cont_fam) %>%
+  rename(Idee.police = IDAPN) %>%
+  rename(Police.ante = ant_pol) %>%
+  rename(Contact.autres = cont_aut) %>%
+  rename(Autre.metier = AUTCHOI) %>%
+  rename(Contact.ami = cont_ami)
+
+corr_satis_repro <- cor(data_corr, use = "complete.obs")
+
+cor.mtest <- function(mat, ...) {
+  mat <- as.matrix(mat)
+  n <- ncol(mat)
+  p.mat<- matrix(NA, n, n)
+  diag(p.mat) <- 0
+  for (i in 1:(n - 1)) {
+    for (j in (i + 1):n) {
+      tmp <- cor.test(mat[, i], mat[, j], ...)
+      p.mat[i, j] <- p.mat[j, i] <- tmp$p.value
+    }
+  }
+  colnames(p.mat) <- rownames(p.mat) <- colnames(mat)
+  p.mat
+}
+
+# Matrice de p-value de la corrélation
+p.mat <- cor.mtest(data_corr)
 
 col <- colorRampPalette(c("#BB4444", "#EE9988", "#FFFFFF", "#77AADD", "#4477AA"))
-corrplot(M, method="color", col=col(200),  
+corrplot(corr_satis_repro, method="color", col=col(200),  
          type="upper", order="hclust", 
          addCoef.col = "black", # Ajout du coefficient de corrélation
-         tl.col="black", tl.srt=45, #Rotation des etiquettes de textes
-         # Combiner avec le niveau de significativité
-         p.mat = p.mat, sig.level = 0.01, insig = "blank", 
+         tl.col="black", tl.srt=45, number.cex = 0.5,
          # Cacher les coefficients de corrélation sur la diagonale
          diag=FALSE 
 )

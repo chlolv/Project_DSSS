@@ -19,11 +19,24 @@ library("data.table")
 library("gtsummary")
 library("tidyverse")
 library("zoo")
+library(conflicted)
+
+
+conflict_prefer("select", "dplyr")
+conflict_prefer("filter", "dplyr")
+conflict_prefer("mutate", "dplyr")
+
 
 # Chargement des données
 # Import data
-setwd("C:\\Users\\HP\\Documents\\cours_ensae\\3A\\Projet DSSS\\gardiens_paix")
-path <- "C:/Users/HP/Documents/cours_ensae/3A/Projet DSSS/gardiens_paix"
+# Yasmine
+# setwd("C:\\Users\\HP\\Documents\\cours_ensae\\3A\\Projet DSSS\\gardiens_paix")
+# path <- "C:/Users/HP/Documents/cours_ensae/3A/Projet DSSS/gardiens_paix"
+
+# Chloé
+setwd("C:\\Users\\chloe\\OneDrive\\Bureau\\3A\\Projet DSSS\\Git_project\\Data")
+path <- "gardiens_paix"
+
 # df_spss <- readRDS("df_spss")
 df <- readRDS("df_sav")
 df[is.na(df)] <- 0
