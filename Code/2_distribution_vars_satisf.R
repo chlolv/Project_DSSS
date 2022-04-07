@@ -8,6 +8,7 @@
 #
 #-----------------------------------------------------#
 
+<<<<<<< HEAD
 # Import packages
 library("haven")
 library("plyr")
@@ -34,6 +35,9 @@ conflict_prefer("mutate", "dplyr")
 setwd("C:\\Users\\chloe\\OneDrive\\Bureau\\3A\\Projet DSSS")
 path <- "gardiens_paix"
 
+=======
+source("0_settings.R")
+>>>>>>> origin/new_scripts
 
 df_spss <- readRDS("df_spss")
 df_sav <- readRDS("df_sav")

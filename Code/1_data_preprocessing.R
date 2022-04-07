@@ -10,6 +10,7 @@
 
 rm(list = ls())
 
+<<<<<<< HEAD
 # Import packages
 library("haven")
 library("plyr")
@@ -36,6 +37,9 @@ conflict_prefer("mutate", "dplyr")
 # Chloé
 setwd("C:\\Users\\chloe\\OneDrive\\Bureau\\3A\\Projet DSSS")
 path <- "gardiens_paix"
+=======
+source("0_settings.R")
+>>>>>>> origin/new_scripts
 
 
 files <- list.files(path,pattern="gardien")
@@ -45,7 +49,11 @@ for (file in files){
   data_spss[[i]] <- read.spss(paste0(path,"/",file))
   i=i+1
 }
+<<<<<<< HEAD
 dataset_spss <- Reduce(function(...) merge(..., all=T), data_spss)
+=======
+#dataset_spss <- Reduce(function(...) merge(..., all=T), data_spss)
+>>>>>>> origin/new_scripts
 
 # Traitements vague 1
 vague1 <- as.data.frame(data_spss[[1]])
@@ -87,6 +95,11 @@ df_spss <- df_spss %>% relocate(vague, .after = CIDENTIT)
 # Save file
 saveRDS(df_spss, "df_spss")
 
+<<<<<<< HEAD
+=======
+#saveRDS(df_spss, "..\\df_spss")
+
+>>>>>>> origin/new_scripts
 ################################################################################
 
 # Creation base sav (labels recodes)
@@ -139,3 +152,8 @@ df_sav <- df_sav %>% relocate(vague, .after = CIDENTIT)
 # Save file
 saveRDS(df_sav, "df_sav")
 
+<<<<<<< HEAD
+=======
+#saveRDS(df_spss, "..\\df_sav")
+
+>>>>>>> origin/new_scripts
