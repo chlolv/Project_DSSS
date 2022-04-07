@@ -8,7 +8,11 @@
 #
 #-----------------------------------------------------#
 
-source("0_settings.R")
+cwd <- getwd()
+setwd(gsub("Code","",cwd))
+#-----------------------------------------------------#
+
+source("Code/0_settings.R")
 
 df_spss <- readRDS("df_spss")
 df_sav <- readRDS("df_sav")

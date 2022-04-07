@@ -10,7 +10,13 @@
 
 rm(list = ls())
 
-source("0_settings.R")
+#---------- PATHS ----------#
+
+cwd <- getwd()
+setwd(gsub("Code","",cwd))
+path <- paste0(getwd(),"/Data")
+
+source("Code/0_settings.R")
 
 
 files <- list.files(path,pattern="gardien")

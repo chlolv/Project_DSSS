@@ -32,12 +32,8 @@ conflict_prefer("filter", "dplyr")
 conflict_prefer("mutate", "dplyr")
 
 
-#---------- USER PATHS ----------#
+#---------- PATHS ----------#
 
-# Yasmine
-# setwd("C:\\Users\\HP\\Documents\\cours_ensae\\3A\\Projet DSSS\\gardiens_paix")
-# path <- "C:/Users/HP/Documents/cours_ensae/3A/Projet DSSS/gardiens_paix"
-
-# Chloé
-setwd("C:\\Users\\chloe\\OneDrive\\Bureau\\3A\\Projet DSSS")
-path <- "gardiens_paix"
+cwd <- getwd()
+setwd(gsub("Code","",cwd))
+path <- "Data"

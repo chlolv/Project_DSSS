@@ -8,8 +8,14 @@
 #
 #-----------------------------------------------------#
 
+cwd <- getwd()
+setwd(gsub("Code","",cwd))
+#-----------------------------------------------------#
+
+source("Code/0_settings.R")
+
 #---------- DATA LOADING ----------#
-df <- readRDS("df_sav")
+df <- readRDS("Data/df_sav")
 df[is.na(df)] <- 0
 w1_w2 <- read.csv2("w1_w2.csv")
 wave1_test <- read.csv2("wave1_test.csv")
