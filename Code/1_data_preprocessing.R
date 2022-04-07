@@ -66,7 +66,7 @@ df_spss <- rbind.fill(vague1,vague2,vague3,vague4,vague5,vague6)
 df_spss <- df_spss %>% relocate(vague, .after = CIDENTIT)
 
 # Save file
-saveRDS(df_spss, "df_spss")
+saveRDS(df_spss, "Data/df_spss")
 
 #saveRDS(df_spss, "..\\df_spss")
 
@@ -120,7 +120,7 @@ df_sav <- rbind.fill(vague1,vague2,vague3,vague4,vague5,vague6)
 df_sav <- df_sav %>% relocate(vague, .after = CIDENTIT)
 
 # Save file
-saveRDS(df_sav, "df_sav")
+saveRDS(df_sav, "Data/df_sav")
 
 #saveRDS(df_spss, "..\\df_sav")
 

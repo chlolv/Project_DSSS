@@ -97,7 +97,7 @@ table1(~ EMPLANT, data = wave1)
 table1(~ PROFPERE, data = wave1)
 table1(~ PROFMERE, data = wave1)
 
-write.csv2(wave1_test,"wave1_test.csv")
+write.csv2(wave1_test,"Data/wave1_test.csv")
 
 # PROFCONJ
 # 18 = Policiers
@@ -174,4 +174,4 @@ table1(~ exp_ant + cont_fam + cont_ami + par_pol +
          BPOLICFA + BPARENTE + BQUELGRA, data = w1_w2)
 
 
-write.csv2(w1_w2,"w1_w2.csv")
+write.csv2(w1_w2,"Data/w1_w2.csv")
