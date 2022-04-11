@@ -7,9 +7,10 @@
 #                               Academic year 2021-2022
 #
 #-----------------------------------------------------#
-cwd <- getwd()
-setwd(gsub("Code","",cwd))
 
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+setwd(gsub("Code","",getwd()))
+path <- "Data"
 
 #---------- Settings  ----------#
 source("Code/0_settings.R")

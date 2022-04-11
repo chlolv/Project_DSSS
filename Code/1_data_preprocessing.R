@@ -12,9 +12,9 @@ rm(list = ls())
 
 #---------- PATHS ----------#
 
-cwd <- getwd()
-setwd(gsub("Code","",cwd))
-path <- paste0(getwd(),"/Data")
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+setwd(gsub("Code","",getwd()))
+path <- "Data"
 
 source("Code/0_settings.R")
 

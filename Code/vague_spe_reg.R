@@ -8,8 +8,9 @@
 #
 #-----------------------------------------------------#
 
-cwd <- getwd()
-setwd(gsub("Code","",cwd))
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+setwd(gsub("Code","",getwd()))
+path <- "Data"
 #-----------------------------------------------------#
 
 source("Code/3_pre_processing_for_regs.R")
