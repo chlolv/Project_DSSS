@@ -25,6 +25,7 @@ library("cli")
 library("labelled")
 library("questionr")
 library("table1")
+library("rstudioapi")
 
 
 conflict_prefer("select", "dplyr")
@@ -34,6 +35,6 @@ conflict_prefer("mutate", "dplyr")
 
 #---------- PATHS ----------#
 
-cwd <- getwd()
-setwd(gsub("Code","",cwd))
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+setwd(gsub("Code","",getwd()))
 path <- "Data"
