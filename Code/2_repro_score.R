@@ -218,7 +218,7 @@ summary(results_acm_satis_w3)
 # On regarde la peojection des variables de reproduction et de leurs modalités dans le plan
 # constituté des deux axes principaux
 
-pdf("acm_satis_w3.pdf")
+pdf("results/acm_satis_w3.pdf")
 fviz_mca_var(results_acm_satis_w3, axes = c(1, 2),
              geom = c("point", "text"), label = "all",
              invisible = "none", labelsize = 4, pointsize = 3, col.var = "blue4",
@@ -233,7 +233,7 @@ dev.off()
 
 # on regarde la contribution des variables 
 
-pdf("acm_satis_w3_contrib_var_first_axis.pdf")
+pdf("results/acm_satis_w3_contrib_var_first_axis.pdf")
 fviz_contrib(results_acm_satis_w3, choice = "var", axes = 1) +
   labs(title = "Contribution des variables de l'ACM à la Première Dimension") +
   theme(axis.text.x = element_text(angle = 45, hjust=1), panel.border = element_blank(),
@@ -243,7 +243,7 @@ fviz_contrib(results_acm_satis_w3, choice = "var", axes = 1) +
                                  colour = "black"))
 dev.off()
 
-pdf("acm_satis_w3_with_sex.pdf")
+pdf("results/acm_satis_w3_with_sex.pdf")
 fviz_mca_ind(results_acm_satis_w3, geom = "point", alpha.ind = .25, habillage = acm_satis_w3$SEXE, addEllipses = TRUE) +
   labs(title = "Projection d'une variable additionnelle (sexe) sur l'ACM", x = "Première Dimension",
        y = "Second Dimension") +
