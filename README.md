@@ -1,7 +1,7 @@
 # La socialisation professionnelle des gardiens de la paix
 ## Yasmine Houri et Chloé Lavest - ENSAE 2022
-## Enseignant: Roland Rathelot (CREST-ENSAE)
-## Encadrant: Laurent Davezies (CREST-ENSAE)
+### Enseignant: Roland Rathelot (CREST-ENSAE)
+### Encadrant: Laurent Davezies (CREST-ENSAE)
 
 La conduite de ce projet s'inscrit dans le cadre du cours de "Projet en *Data Science* Appliquée aux Sciences Sociales* enseigné aux élèves de troisième année suivant la voie de spécialisation "*Data Science* appliquée aux Sciences Sociales" à l'ENSAE.
 
