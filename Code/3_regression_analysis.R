@@ -124,19 +124,54 @@ dep_effect <- reg_controles(df = acm_satis_w3_w5, var_dep = "satis_score_w5",
 
 #----------------------------------------------------------------#
 #----------------------------------------------------------------#
+graph_inter_w5 <- acm_satis_w5 %>%
+  rename(Satisfaction = satis_score_w5) %>%
+  rename(Socialisation = acm_score) %>%
+  mutate(Diplome = as.factor(as.numeric(DIPLOME))) %>%
+  mutate(Dip = fct_relevel(Diplome, "1","8", "4", "5", "7", "3", "2", "6", "9")) %>%
+  filter(Dip != "10")
+
+graph_inter_w3 <- acm_satis_w3 %>%
+  rename(Satisfaction = satis_score_w3) %>%
+  rename(Socialisation = acm_score) %>%
+  mutate(Diplome = as.factor(as.numeric(DIPLOME))) %>%
+  mutate(Dip = fct_relevel(Diplome, "1","8", "4", "5", "7", "3", "2", "6", "9")) %>%
+  filter(Dip != "10")
+
 
 ### WAVE 5
 
-lm.fit5 <- lm(satis_score_w5 ~ acm_score*SEXE + AGE + DIPLOME, data = acm_satis_w5)
+lm.fit5_stargazer <- lm(Satisfaction ~ Socialisation*SEXE + AGE + DIPLOME, data = graph_inter_w5)
+lm.fit3_stargazer <- lm(Satisfaction ~ Socialisation*SEXE + AGE + DIPLOME, data = graph_inter_w3)
+
+stargazer(lm.fit3_stargazer,title="Régressions avec terme d'interaction vague 3", align=TRUE,
+          no.space = TRUE, font.size = 'small', out = "results/reg_inter_wave3.tex")
+stargazer(lm.fit5_stargazer,title="Régressions avec terme d'interaction vague 5", align=TRUE,
+          no.space = TRUE, font.size = 'small', out = "results/reg_inter_wave5.tex")
+
+
+
+lm.fit5 <- lm(Satisfaction ~ Socialisation*SEXE + AGE + Dip, data = graph_inter_w5)
+lm.fit3 <- lm(Satisfaction ~ Socialisation*SEXE + AGE + Dip, data = graph_inter_w3)
+
 pdf("results/plot_interaction_w5.pdf")
-plot(allEffects(lm.fit5))
+plot(allEffects(lm.fit5)) +
+  theme(axis.text.x = element_text(angle = 45, hjust=1), panel.border = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        axis.line = element_line(size = 0.5, linetype = "solid",
+                                 colour = "black"))
 dev.off()
 
 ### WAVE 3
 
-lm.fit3 <- lm(satis_score_w3 ~ acm_score*SEXE + AGE + DIPLOME, data = acm_satis_w3)
 pdf("results/plot_interaction_w3.pdf")
-plot(allEffects(lm.fit3))
+plot(allEffects(lm.fit3)) +
+  theme(axis.text.x = element_text(angle = 45, hjust=1), panel.border = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        axis.line = element_line(size = 0.5, linetype = "solid",
+                                 colour = "black"))
 dev.off()
 
 
