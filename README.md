@@ -14,5 +14,6 @@ Le dossier "Code" contient les scripts R à l'origine de nos résultats. Ils son
 - 1_heterogeneity.R
 - 2_repro_score.R
 - 3_regression_analysis.R
+
 Ces scripts utilisent exclusivement les données contenues dans le dossier "Data". Le contenu de ce repositoire est donc autosuffisant.
 Les différents sous-dossiers du dossier "Code" contiennent les tableaux et représentations graphiques des résultats de notre analyse utilisés dans le rapport.
