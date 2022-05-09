@@ -1,27 +1,18 @@
-<<<<<<< HEAD
-# Project_DSSS
-Project in Data Science and Social Science (course taught by R. Rathelot at ENSAE, academic year 2021-2022)
+# La socialisation professionnelle des gardiens de la paix
+## Yasmine Houri et Chloé Lavest - ENSAE 2022
+## Enseignant: Roland Rathelot (CREST-ENSAE)
+## Encadrant: Laurent Davezies (CREST-ENSAE)
 
+La conduite de ce projet s'inscrit dans le cadre du cours de "Projet en *Data Science* Appliquée aux Sciences Sociales* enseigné aux élèves de troisième année suivant la voie de spécialisation "*Data Science* appliquée aux Sciences Sociales" à l'ENSAE.
 
-Group project: Yasmine Houri and Chloé Lavest
+## Résumé du projet
+Le mécontentement croissant des policiers témoigne de l'incapacité de l'institution policière à préparer les nouvelles recrues à la réalité du métier de policier. Néanmoins, certains s'en sortent mieux que d'autres, profitant d'une acculturation préalable à l'entrée en formation via leur socialisation primaire. Nous étudions dans ce papier l'influence de la socialisation primaire sur la satisfaction de la promotion 1992 d'élèves gardiens de la paix, à différents moments de leur carrière. Nous identifions clairement un premium lié à une forte socialisation policière, qui n'apparaît néanmoins qu'après l'entrée sur le terrain. Par ailleurs, l'effet identifié est hétérogène : la satisfaction des femmes et des individus en mobilité sociale descendante dépend plus de leur socialisation que celles des hommes et des individus immobiles ou en ascension sociale.
 
-Git initialization by Chloé
-Will work on main branch except if the change wasn't discussed first
-
-=======
-# Project_DSSS
-Project in Data Science and Social Science (course taught by R. Rathelot at ENSAE, academic year 2021-2022)
-
-
-Group project: Yasmine Houri and Chloé Lavest
-
-06/04/22 \\
-Main modifications include \\
-- Only keeping pre processing scripts \\
-- Re-uploading the data \\
-
-Script main allows to execute all commands at once
-
-Other scripts are prefixed according to the order in which they must be ran 
-
->>>>>>> origin/new_scripts
+## Guide d'utilisation de ce repositoire
+Le dossier "Code" contient les scripts R à l'origine de nos résultats. Ils sont à exécuter dans l'ordre suivant:
+- settings.R
+- 1_heterogeneity.R
+- 2_repro_score.R
+- 3_regression_analysis.R
+Ces scripts utilisent exclusivement les données contenues dans le dossier "Data". Le contenu de ce repositoire est donc autosuffisant.
+Les différents sous-dossiers du dossier "Code" contiennent les tableaux et représentations graphiques des résultats de notre analyse utilisés dans le rapport.
