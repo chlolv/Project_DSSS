@@ -37,10 +37,51 @@ stargazer(reg_wave5$models[1],reg_wave5$models[3],reg_wave5$models[4],title="Ré
           no.space = TRUE, font.size = 'small', out = "results/reg_wave5.tex",
           column.labels=c('Model 1', 'Model 2', 'Model 3'))
 
+# NOUVEAU NOUVEAU
 # Ajout des variables de valeurs
-reg_wave5_values <- reg_controles(df = acm_satis_w5, var_dep = "satis_score_w5",
+values_w5 <- acm_satis_w5 %>%
+  mutate(IMPORMET = factor(IMPORMET, levels = c("de faire un travail intéressant",
+                                                "de travailler dans une bonne ambiance", "de pouvoir compter sur les collègues",
+                                                "de respecter le règlement"),
+                           labels = c("Intérêt", "Ambiance", "Collège", "Règlement"))) %>%
+  mutate(RASPEUR = factor(RASPEUR, levels = c("rassurer les honnêtes gens",
+                                              "faire peur aux délinquants"),
+                          labels = c("Rassurer", "Faire peur"))) %>%
+  mutate(ORDREINI = factor(ORDREINI, levels = c("je m'en tiendrai aux ordres reçus",
+                                                "je prendrai des initiatives"),
+                           labels = c("Ordres", "Initiatives"))) %>%
+  mutate(EFFIREGL = factor(EFFIREGL, levels = c("souvent", "rarement", "jamais"),
+                           labels = c("Svt", "Rmt", "Jms"))) %>%
+  mutate(PUBOPIN = factor(PUBOPIN, levels = c("plutôt favorable",
+                                              "plutôt défavorable", "plutôt indifférente"),
+                          labels = c("Fav", "Défav", "Indif"))) %>%
+  drop_na()
+
+values_w3 <- acm_satis_w3 %>%
+  mutate(IMPORMET = factor(IMPORMET, levels = c("de faire un travail intéressant",
+                                                "de travailler dans une bonne ambiance", "de pouvoir compter sur les collègues",
+                                                "de respecter le règlement"),
+                           labels = c("Intérêt", "Ambiance", "Collège", "Règlement"))) %>%
+  mutate(RASPEUR = factor(RASPEUR, levels = c("rassurer les honnêtes gens",
+                                              "faire peur aux délinquants"),
+                          labels = c("Rassurer", "Faire peur"))) %>%
+  mutate(ORDREINI = factor(ORDREINI, levels = c("je m'en tiendrai aux ordres reçus",
+                                                "je prendrai des initiatives"),
+                           labels = c("Ordres", "Initiatives"))) %>%
+  mutate(EFFIREGL = factor(EFFIREGL, levels = c("souvent", "rarement", "jamais"),
+                           labels = c("Svt", "Rmt", "Jms"))) %>%
+  mutate(PUBOPIN = factor(PUBOPIN, levels = c("plutôt favorable",
+                                              "plutôt défavorable", "plutôt indifférente"),
+                          labels = c("Fav", "Défav", "Indif"))) %>%
+  drop_na()
+
+
+  
+
+reg_wave5_values <- reg_controles(df = values_w5, var_dep = "satis_score_w5",
                            var_indep = "acm_score",
                            controles = valeurs)
+
 stargazer(reg_wave5_values$models[1],reg_wave5_values$models[4],reg_wave5_values$models[9],
           title="Régressions vague 5", align=TRUE,
           no.space = TRUE, font.size = 'small', out = "results/reg_wave5_values.tex",
@@ -77,13 +118,18 @@ stargazer(reg_wave3$models[1],reg_wave3$models[3],reg_wave3$models[4],
           column.labels=c('Model 1', 'Model 2', 'Model 3'))
 
 # Ajout des variables de valeurs
-reg_wave3_values <- reg_controles(df = acm_satis_w3, var_dep = "satis_score_w3",
+reg_wave3_values <- reg_controles(df = values_w3, var_dep = "satis_score_w3",
                                   var_indep = "acm_score",
                                   controles = valeurs)
 stargazer(reg_wave3_values$models[1],reg_wave3_values$models[4],reg_wave3_values$models[9],
           title="Régressions vague 3", align=TRUE,
           no.space = TRUE, font.size = 'small', out = "results/reg_wave3_values.tex",
           column.labels=c('Model 1', 'Model 2', 'Model 3'))
+
+
+
+# FIN NOUVEAU NOUVEAU
+
 
 # Femmes
 ### WAVE 3

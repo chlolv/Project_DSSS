@@ -113,7 +113,9 @@ df <- df %>%
                               TRUE ~ 0)) %>%
   mutate(par_pol = case_when(pere_pol == 1 & mere_pol == 1 ~ 1,
                              pere_pol == 0 | mere_pol == 0 ~ 0,
-                             TRUE ~ 0))
+                             TRUE ~ 0)) 
+  
+  
 
 wave1 <- df %>% filter(vague==1)
 wave3 <- df %>% filter(vague==3)
@@ -122,6 +124,7 @@ wave5 <- df %>% filter(vague==5)
 
 #------------------- FUNCTIONS ----------------------------------#
 
+# tables de stat desc
 table_creation <- function(table1output, title = "", long = 0, location = "")  {
   if (class(table1output)[1] != "table1" | class(table1output)[2] != "html" | class(table1output)[3] !="character") {
     stop("tablea_creation takes as input the result of table1()")
@@ -166,7 +169,7 @@ my.render.cat <- function(x) {
                                                   sprintf("%0.0f %%", PCTnoNA))))
 }
 
-
+# régressions avec ajout de controle au fur et à mesure
 reg_controles <- function(df, var_dep, var_indep, controles, ...) {
   mod_summaries <- list()
   models <- list()
@@ -187,5 +190,22 @@ reg_controles <- function(df, var_dep, var_indep, controles, ...) {
   
 }
 
+
+# calcul des p-valeurs
+pvalue <- function(x, ...) {
+  # Construct vectors of data y, and groups (strata) g
+  y <- unlist(x)
+  g <- factor(rep(1:length(x), times=sapply(x, length)))
+  if (is.numeric(y)) {
+    # For numeric variables, perform a standard 2-sample t-test
+    p <- t.test(y ~ g)$p.value
+  } else {
+    # For categorical variables, perform a chi-squared test of independence
+    p <- chisq.test(table(y, g), simulate.p.value = TRUE)$p.value
+  }
+  # Format the p-value, using an HTML entity for the less-than sign.
+  # The initial empty string places the output on the line below the variable label.
+  c("", sub("<", "&lt;", format.pval(p, digits=3, eps=0.001)))
+}
 
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
