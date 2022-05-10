@@ -10,7 +10,6 @@ Le mécontentement croissant des policiers témoigne de l'incapacité de l'insti
 
 ## Guide d'utilisation de ce repositoire
 Le dossier "Code" contient les scripts R à l'origine de nos résultats. Ils sont à exécuter dans l'ordre suivant:
-- settings.R
 - 1_heterogeneity.R
 - 2_repro_score.R
 - 3_regression_analysis.R
