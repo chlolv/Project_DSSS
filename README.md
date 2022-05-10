@@ -1,4 +1,4 @@
-# La socialisation professionnelle des gardiens de la paix
+# *Happy cop or Sad cop*? L'effet de la socialisation primaire sur la satisfaction au travail des policiers
 ## Yasmine Houri et Chloé Lavest - ENSAE 2022
 ### Enseignant: Roland Rathelot (CREST-ENSAE)
 ### Encadrant: Laurent Davezies (CREST-ENSAE)
